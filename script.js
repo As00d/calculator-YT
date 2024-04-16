@@ -9,7 +9,9 @@ const press = function (value) {
 };
 
 const equal = function () {
-  userInput.value = eval(expression);
+  if (expression !== "") {
+    userInput.value = eval(expression);
+  }
   expression = "";
 };
 
