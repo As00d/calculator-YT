@@ -1,10 +1,33 @@
-// BUG User should not be allowed to do like 8****9 meaning multiple operator at once
 const userInput = document.getElementById("userInput");
 let expression = "";
 
 const press = function (value) {
-  expression += value;
-  userInput.value = expression;
+  if (expression === "") {
+    if (value === "-" || value === "+" || value === "*" || value === "/") {
+    } else {
+      expression += value;
+      userInput.value = expression;
+    }
+  } else {
+    let lastElement = expression[expression.length - 1];
+    if (
+      (lastElement === "+" ||
+        lastElement === "*" ||
+        lastElement === "/" ||
+        lastElement === "-") &&
+      (value === "+" || value === "*" || value === "/" || value === "-")
+    ) {
+      console.log("value input" + value);
+
+      let newExpression =
+        expression.substring(0, expression.length - 1) + value;
+      userInput.value = newExpression;
+      expression = newExpression;
+    } else {
+      expression += value;
+      userInput.value = expression;
+    }
+  }
 };
 
 const equal = function () {
