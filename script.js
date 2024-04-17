@@ -17,8 +17,6 @@ const press = function (value) {
         lastElement === "-") &&
       (value === "+" || value === "*" || value === "/" || value === "-")
     ) {
-      console.log("value input" + value);
-
       let newExpression =
         expression.substring(0, expression.length - 1) + value;
       userInput.value = newExpression;
